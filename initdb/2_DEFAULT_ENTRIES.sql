@@ -92,7 +92,6 @@ Do $$
     ('Lucic', 'Vladimir', '1989-06-17', 'Serbie', 204, 'AI', _BAYERN),
     ('Giffey', 'Niels', '1991-06-08', 'Allemagne', 200, 'AI', _BAYERN),
     ('da Silva', 'Oscar', '1998-09-21', 'Allemagne', 205, 'AF', _BAYERN),
-    ('Fischer', 'Killian', '2007-02-08', 'Allemagne', 205, 'AF', _BAYERN),
     ('Voigtmann', 'Johannes', '1992-09-30', 'Allemagne', 211, 'P', _BAYERN);
 
     -- FENERBAHÇE BEKO
@@ -121,7 +120,6 @@ Do $$
     ('Badio', 'Brancou', '1999-02-17', 'Espagne', 191, 'AR', _PANATHINAIKOS),
     ('Yabusele', 'Guerschon', '1995-12-17', 'France', 201, 'AF', _PANATHINAIKOS),
     ('Fall', 'Moustapha', '1992-02-23', 'France', 218, 'P', _PANATHINAIKOS),
-    ('Moraitis', 'Dimitris', '1999-02-03', 'Grèce', 190, 'M', _PANATHINAIKOS),
     ('Sloukas', 'Kostas', '1990-01-15', 'Grèce', 190, 'M', _PANATHINAIKOS),
     ('Nunn', 'Kendrick', '1995-08-03', 'États-Unis', 195, 'AR', _PANATHINAIKOS),
     ('Grant', 'Jerian', '1992-10-09', 'États-Unis', 196, 'M', _PANATHINAIKOS),

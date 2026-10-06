@@ -28,3 +28,32 @@ create table student_course
     student_id int not null,
     course_id int not null
 );
+
+
+
+//// notre BDD
+
+create table clubs
+(
+    id SERIAL PRIMARY KEY,
+    nom TEXT not null,
+    ville TEXT not null,
+    pays TEXT not null,
+    stade TEXT not null,
+    coach TEXT not null,
+    image_coach bytea null,
+    logo_club bytea null
+);
+
+create table joueurs
+(
+    id SERIAL PRIMARY KEY,
+    nom TEXT not null,
+    prenom TEXT not null,
+    anniversaire date null,
+    nationalite TEXT not null,
+    taille int null,
+    poste TEXT not null check (poste in ('M', 'AR', 'AI', 'AF', 'P')),
+    photo_joueur bytea null,
+    club_id int not null references clubs (id)
+);

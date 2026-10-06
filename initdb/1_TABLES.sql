@@ -30,9 +30,6 @@ create table student_course
 );
 
 
-
-//// notre BDD
-
 create table clubs
 (
     id SERIAL PRIMARY KEY,

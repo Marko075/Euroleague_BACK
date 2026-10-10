@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +20,6 @@ import com.takima.backskeleton.models.StatsJoueurMatch;
 @Service
 public class MatchService {
 
-    private static final int NB_DERNIERS_MATCHS = 5;
 
     private final MatchDao matchDao;
     private final StatsJoueurMatchDao statsJoueurMatchDao;
@@ -32,8 +31,7 @@ public class MatchService {
 
     @Transactional(readOnly = true)
     public List<MatchStatsDto> findDerniersMatchsJoues() {
-        // 1) les 5 derniers matchs joués
-        List<Match> matchs = matchDao.findDerniersMatchsJoues(PageRequest.of(0, NB_DERNIERS_MATCHS));
+        List<Match> matchs = matchDao.findDerniersMatchsJoues(Pageable.unpaged());
         if (matchs.isEmpty()) {
             return new ArrayList<>();
         }

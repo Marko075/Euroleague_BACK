@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,9 +28,11 @@ public class MatchService {
         this.statsJoueurMatchDao = statsJoueurMatchDao;
     }
 
+    // Matchs joués, filtrés par mini-saison, journée et/ou club (chaque filtre est optionnel)
     @Transactional(readOnly = true)
-    public List<MatchStatsDto> findDerniersMatchsJoues() {
-        List<Match> matchs = matchDao.findDerniersMatchsJoues(Pageable.unpaged());
+    public List<MatchStatsDto> findMatchsJoues(Integer miniSaison, Integer journee, Long clubId) {
+        // 1) les matchs correspondant aux filtres
+        List<Match> matchs = matchDao.findMatchsJoues(miniSaison, journee, clubId);
         if (matchs.isEmpty()) {
             return new ArrayList<>();
         }

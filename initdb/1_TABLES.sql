@@ -8,7 +8,18 @@ create table clubs
     stade TEXT not null,
     coach TEXT not null,
     image_coach bytea null,
-    logo_club bytea null
+    logo_club bytea null,
+    code TEXT null unique, -- code EuroLeague (PAN, PAR...) : sert aux images du front, facultatif
+    surnom TEXT null,
+    annee_creation int null,
+    couleur_primaire TEXT not null default '#1d3557',
+    couleur_secondaire TEXT not null default '#ffffff',
+    capacite_stade int null,
+    titres_euroleague int not null default 0,
+    titres_nationaux int not null default 0,
+    description TEXT null,
+    latitude double precision null,
+    longitude double precision null
 );
 
 create table joueurs

@@ -62,6 +62,17 @@ public class Match {
     public Match() {
     }
 
+    public Match(Long id, Club clubDomicile, Club clubExterieur, LocalDateTime dateMatch,
+                 String statut, Integer scoreDomicile, Integer scoreExterieur) {
+        this.id = id;
+        this.clubDomicile = clubDomicile;
+        this.clubExterieur = clubExterieur;
+        this.dateMatch = dateMatch;
+        this.statut = statut;
+        this.scoreDomicile = scoreDomicile;
+        this.scoreExterieur = scoreExterieur;
+    }
+
     public Long getId() {
         return id;
     }

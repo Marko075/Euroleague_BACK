@@ -41,4 +41,26 @@ public interface MatchDao extends JpaRepository<Match, Long> {
     List<Match> findMatchsJoues(@Param("miniSaison") Integer miniSaison,
                                 @Param("journee") Integer journee,
                                 @Param("clubId") Long clubId);
+
+    // Tous les matchs d'un club (domicile ou extérieur), triés par date
+    @Query("""
+            SELECT m FROM Match m
+            JOIN FETCH m.clubDomicile
+            JOIN FETCH m.clubExterieur
+            WHERE m.clubDomicile.id = :clubId OR m.clubExterieur.id = :clubId
+            ORDER BY m.dateMatch
+            """)
+    List<Match> findByClubIdOrdered(@Param("clubId") Long clubId);
+
+    // Tous les matchs terminés, du plus récent au plus ancien
+    @Query("""
+            SELECT m FROM Match m
+            JOIN FETCH m.clubDomicile
+            JOIN FETCH m.clubExterieur
+            WHERE m.statut = 'TERMINE'
+              AND m.scoreDomicile IS NOT NULL
+              AND m.scoreExterieur IS NOT NULL
+            ORDER BY m.dateMatch DESC
+            """)
+    List<Match> findTermines();
 }

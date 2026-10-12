@@ -26,11 +26,33 @@ public class Club {
     private byte[] imageCoach;
     @Column(name = "logo_club")
     private byte[] logoClub;
+    private String code;
+    private String surnom;
+    @Column(name = "annee_creation")
+    private Integer anneeCreation;
+    @Column(name = "couleur_primaire")
+    private String couleurPrimaire;
+    @Column(name = "couleur_secondaire")
+    private String couleurSecondaire;
+    @Column(name = "capacite_stade")
+    private Integer capaciteStade;
+    @Column(name = "titres_euroleague")
+    private Integer titresEuroleague;
+    @Column(name = "titres_nationaux")
+    private Integer titresNationaux;
+    private String description;
+    private Double latitude;
+    private Double longitude;
     @OneToMany(mappedBy = "club")
     @JsonIgnore
     List<Joueur> joueurs;
 
     public Club() {
+    }
+
+    public Club(Long id, String nom) {
+        this.id = id;
+        this.nom = nom;
     }
 
     public Long getId() {
@@ -65,8 +87,51 @@ public class Club {
         return logoClub;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public String getSurnom() {
+        return surnom;
+    }
+
+    public Integer getAnneeCreation() {
+        return anneeCreation;
+    }
+
+    public String getCouleurPrimaire() {
+        return couleurPrimaire;
+    }
+
+    public String getCouleurSecondaire() {
+        return couleurSecondaire;
+    }
+
+    public Integer getCapaciteStade() {
+        return capaciteStade;
+    }
+
+    public Integer getTitresEuroleague() {
+        return titresEuroleague;
+    }
+
+    public Integer getTitresNationaux() {
+        return titresNationaux;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
     public List<Joueur> getJoueurs() {
         return joueurs;
     }
 }
-

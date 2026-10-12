@@ -15,20 +15,56 @@ BEGIN
     -- CLUBS
     ----------------------------------------------------------------
 
-    INSERT INTO clubs (id, nom, ville, pays, stade, coach)
-    VALUES (_PANATHINAIKOS, 'Panathinaikos AKTOR', 'Athènes', 'Grèce', 'OAKA Telekom Center', 'Zeljko Obradovic');
+    -- Sources des infos clubs (fondation, salle, palmarès) : Wikipédia et euroleaguebasketball.net
+    INSERT INTO clubs (id, nom, ville, pays, stade, coach, code, surnom, annee_creation,
+                       couleur_primaire, couleur_secondaire, capacite_stade,
+                       titres_euroleague, titres_nationaux, description, latitude, longitude)
+    VALUES (_PANATHINAIKOS, 'Panathinaikos AKTOR', 'Athènes', 'Grèce', 'OAKA Telekom Center', 'Zeljko Obradovic',
+            'PAN', 'Le Trèfle', 1919, '#00843D', '#FFFFFF', 19250, 7, 40,
+            'Fondé en 1919, le Panathinaïkos est le club le plus titré de Grèce avec 40 titres de champion. '
+            || 'Sept fois champion d''Europe (1996, 2000, 2002, 2007, 2009, 2011 et 2024), le Trèfle vert '
+            || 'reçoit à l''OAKA, l''une des salles les plus bouillantes du continent.',
+            38.0365, 23.7870);
 
-    INSERT INTO clubs (id, nom, ville, pays, stade, coach)
-    VALUES (_PARTIZAN, 'Partizan Mozzart Bet', 'Belgrade', 'Serbie', 'Belgrade Arena', 'Joan Peñarroya');
+    INSERT INTO clubs (id, nom, ville, pays, stade, coach, code, surnom, annee_creation,
+                       couleur_primaire, couleur_secondaire, capacite_stade,
+                       titres_euroleague, titres_nationaux, description, latitude, longitude)
+    VALUES (_PARTIZAN, 'Partizan Mozzart Bet', 'Belgrade', 'Serbie', 'Belgrade Arena', 'Joan Peñarroya',
+            'PAR', 'Crno-beli', 1945, '#111111', '#FFFFFF', 20094, 1, 22,
+            'Fondé en 1945, le Partizan est un monument du basket yougoslave puis serbe, avec 22 titres nationaux. '
+            || 'Champion d''Europe en 1992 grâce au tir au buzzer de Saša Đorđević, avec Željko Obradović sur le banc, '
+            || 'le club « noir et blanc » attire l''un des publics les plus nombreux d''Europe à la Belgrade Arena.',
+            44.8143, 20.4214);
 
-    INSERT INTO clubs (id, nom, ville, pays, stade, coach)
-    VALUES (_PARIS, 'Paris Basketball', 'Paris', 'France', 'Adidas Arena', 'Maxime Lefèvre');
+    INSERT INTO clubs (id, nom, ville, pays, stade, coach, code, surnom, annee_creation,
+                       couleur_primaire, couleur_secondaire, capacite_stade,
+                       titres_euroleague, titres_nationaux, description, latitude, longitude)
+    VALUES (_PARIS, 'Paris Basketball', 'Paris', 'France', 'Adidas Arena', 'Maxime Lefèvre',
+            'PRS', 'Le club de la capitale', 2018, '#0B1F4B', '#E4002B', 8000, 0, 1,
+            'Créé en 2018, Paris Basketball a connu une ascension fulgurante : vainqueur de l''EuroCup et de la '
+            || 'Leaders Cup en 2024, puis champion de France et vainqueur de la Coupe de France en 2025. '
+            || 'Le club découvre l''EuroLeague en 2024-25 à l''Adidas Arena, salle construite pour les JO de Paris 2024.',
+            48.8999, 2.3597);
 
-    INSERT INTO clubs (id, nom, ville, pays, stade, coach)
-    VALUES (_FENERBAHCE, 'Fenerbahçe Beko', 'Istanbul', 'Turquie', 'Ülker Sports Arena', 'Sarunas Jasikevicius');
+    INSERT INTO clubs (id, nom, ville, pays, stade, coach, code, surnom, annee_creation,
+                       couleur_primaire, couleur_secondaire, capacite_stade,
+                       titres_euroleague, titres_nationaux, description, latitude, longitude)
+    VALUES (_FENERBAHCE, 'Fenerbahçe Beko', 'Istanbul', 'Turquie', 'Ülker Sports Arena', 'Sarunas Jasikevicius',
+            'ULK', 'Les Canaris jaunes', 1913, '#002D72', '#FFE600', 13800, 2, 16,
+            'Section basket du Fenerbahçe fondée en 1913, les « Sarı Kanaryalar » comptent 16 titres de champion '
+            || 'de Turquie et deux EuroLeague (2017 et 2025). Ils jouent à l''Ülker Sports and Event Hall, '
+            || 'sur la rive asiatique d''Istanbul.',
+            40.9925, 29.1105);
 
-    INSERT INTO clubs (id, nom, ville, pays, stade, coach)
-    VALUES (_BAYERN, 'FC Bayern Munich', 'Munich', 'Allemagne', 'SAP Garden', 'Anton Gavel');
+    INSERT INTO clubs (id, nom, ville, pays, stade, coach, code, surnom, annee_creation,
+                       couleur_primaire, couleur_secondaire, capacite_stade,
+                       titres_euroleague, titres_nationaux, description, latitude, longitude)
+    VALUES (_BAYERN, 'FC Bayern Munich', 'Munich', 'Allemagne', 'SAP Garden', 'Anton Gavel',
+            'MUN', 'Die Roten', 1946, '#DC052D', '#FFFFFF', 12500, 0, 7,
+            'Section basket du FC Bayern créée en 1946, le club munichois a connu un vrai renouveau dans les '
+            || 'années 2010 : 7 titres de champion d''Allemagne, dont 2014, 2018, 2019, 2024 et 2025. '
+            || 'Depuis 2024, il joue au SAP Garden, salle ultramoderne du parc olympique de Munich.',
+            48.1770, 11.5480);
 
 
     ----------------------------------------------------------------

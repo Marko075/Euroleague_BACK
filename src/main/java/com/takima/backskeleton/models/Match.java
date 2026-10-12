@@ -64,13 +64,40 @@ public class Match {
 
     public Match(Long id, Club clubDomicile, Club clubExterieur, LocalDateTime dateMatch,
                  String statut, Integer scoreDomicile, Integer scoreExterieur) {
+        this(id, null, null, clubDomicile, clubExterieur, dateMatch, statut, scoreDomicile, scoreExterieur);
+    }
+
+    public Match(Long id, Integer miniSaison, Integer journee, Club clubDomicile, Club clubExterieur,
+                 LocalDateTime dateMatch, String statut, Integer scoreDomicile, Integer scoreExterieur) {
         this.id = id;
+        this.miniSaison = miniSaison;
+        this.journee = journee;
         this.clubDomicile = clubDomicile;
         this.clubExterieur = clubExterieur;
         this.dateMatch = dateMatch;
         this.statut = statut;
         this.scoreDomicile = scoreDomicile;
         this.scoreExterieur = scoreExterieur;
+    }
+
+    public boolean estJoue() {
+        return "TERMINE".equals(statut) && scoreDomicile != null && scoreExterieur != null;
+    }
+
+    // Enregistre le résultat du match (simulation) : il passe à TERMINE
+    public void terminer(int scoreDomicile, int scoreExterieur, Joueur mvp) {
+        this.statut = "TERMINE";
+        this.scoreDomicile = scoreDomicile;
+        this.scoreExterieur = scoreExterieur;
+        this.mvp = mvp;
+    }
+
+    // Retour à l'état « à venir » : plus de score ni de MVP
+    public void reinitialiser() {
+        this.statut = "A_VENIR";
+        this.scoreDomicile = null;
+        this.scoreExterieur = null;
+        this.mvp = null;
     }
 
     public Long getId() {

@@ -32,6 +32,14 @@ public class Joueur {
     public Joueur() {
     }
 
+    public Joueur(Long id, String nom, String prenom, String poste, Club club) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.poste = poste;
+        this.club = club;
+    }
+
     public Long getId() {
         return id;
     }

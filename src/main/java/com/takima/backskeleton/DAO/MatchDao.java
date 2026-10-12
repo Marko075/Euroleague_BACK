@@ -38,41 +38,34 @@ public interface MatchDao extends JpaRepository<Match, Long> {
                    OR m.clubExterieur.id = :clubId)
             ORDER BY m.dateMatch DESC
             """)
-<<<<<<< HEAD
-    List<Match> findDerniersMatchsJoues(Pageable pageable);
-
-    // Nombre de fois où un joueur a été MVP
-        @Query("""
-        SELECT COUNT(m)
-        FROM Match m
-        WHERE m.saison.statut = 'EN_COURS'
-        AND m.statut = 'TERMINE'
-        AND m.mvp.id = :joueurId
-        AND (:miniSaison IS NULL OR m.miniSaison = :miniSaison)
-        AND (:journee IS NULL OR m.journee = :journee)
-        """)
-        Long countMvpByJoueurAndPeriode(
-        @Param("joueurId") Long joueurId,
-        @Param("miniSaison") Integer miniSaison,
-        @Param("journee") Integer journee
-        );
-
-
-        @Query("""
-        SELECT DISTINCT m.journee
-        FROM Match m
-        WHERE m.saison.statut = 'EN_COURS'
-        AND m.miniSaison = :miniSaison
-        AND m.statut = 'TERMINE'
-        ORDER BY m.journee
-        """)
-        List<Integer> findJourneesTerminees(
-        @Param("miniSaison") Integer miniSaison
-        );
-=======
     List<Match> findMatchsJoues(@Param("miniSaison") Integer miniSaison,
                                 @Param("journee") Integer journee,
                                 @Param("clubId") Long clubId);
+
+    // Nombre de fois où un joueur a été MVP
+    @Query("""
+            SELECT COUNT(m)
+            FROM Match m
+            WHERE m.saison.statut = 'EN_COURS'
+              AND m.statut = 'TERMINE'
+              AND m.mvp.id = :joueurId
+              AND (:miniSaison IS NULL OR m.miniSaison = :miniSaison)
+              AND (:journee IS NULL OR m.journee = :journee)
+            """)
+    Long countMvpByJoueurAndPeriode(@Param("joueurId") Long joueurId,
+                                    @Param("miniSaison") Integer miniSaison,
+                                    @Param("journee") Integer journee);
+
+    // Journées déjà jouées d'une mini-saison de la saison en cours
+    @Query("""
+            SELECT DISTINCT m.journee
+            FROM Match m
+            WHERE m.saison.statut = 'EN_COURS'
+              AND m.miniSaison = :miniSaison
+              AND m.statut = 'TERMINE'
+            ORDER BY m.journee
+            """)
+    List<Integer> findJourneesTerminees(@Param("miniSaison") Integer miniSaison);
 
     // Tous les matchs d'un club (domicile ou extérieur), triés par date
     @Query("""
@@ -95,5 +88,4 @@ public interface MatchDao extends JpaRepository<Match, Long> {
             ORDER BY m.dateMatch DESC
             """)
     List<Match> findTermines();
->>>>>>> 2104399e9c51de94f53d3eb9414d9acd395f9704
 }

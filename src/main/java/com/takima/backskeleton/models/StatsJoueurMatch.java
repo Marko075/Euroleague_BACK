@@ -48,6 +48,19 @@ public class StatsJoueurMatch {
     public StatsJoueurMatch() {
     }
 
+    // Les points ne sont pas passés : PostgreSQL les calcule à partir des tirs réussis
+    public StatsJoueurMatch(Match match, Joueur joueur, int lancersFrancs, int deuxPoints, int troisPoints,
+                            int rebonds, int passesDecisives, int interceptions) {
+        this.match = match;
+        this.joueur = joueur;
+        this.lancersFrancs = lancersFrancs;
+        this.deuxPoints = deuxPoints;
+        this.troisPoints = troisPoints;
+        this.rebonds = rebonds;
+        this.passesDecisives = passesDecisives;
+        this.interceptions = interceptions;
+    }
+
     public Long getId() {
         return id;
     }

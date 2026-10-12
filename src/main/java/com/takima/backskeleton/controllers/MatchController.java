@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.takima.backskeleton.DTO.MatchStatsDto;
@@ -21,9 +22,16 @@ public class MatchController {
         this.matchService = matchService;
     }
 
-    // Les 5 derniers matchs joués, avec les statistiques des joueurs et le MVP
-    @GetMapping("/derniers")
-    public List<MatchStatsDto> findDerniersMatchsJoues() {
-        return matchService.findDerniersMatchsJoues();
+    // Matchs joués, avec les statistiques des joueurs et le MVP.
+    // Filtres optionnels et cumulables, par exemple :
+    //   GET /matchs
+    //   GET /matchs?miniSaison=1
+    //   GET /matchs?miniSaison=2&journee=10&clubId=3
+    @GetMapping("")
+    public List<MatchStatsDto> findMatchsJoues(
+            @RequestParam(required = false) Integer miniSaison,
+            @RequestParam(required = false) Integer journee,
+            @RequestParam(required = false) Long clubId) {
+        return matchService.findMatchsJoues(miniSaison, journee, clubId);
     }
 }
